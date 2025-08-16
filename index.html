@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEAN IP | ÐΛɌ₭ᑎΞ𐒡𐒡</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Revolutionary Theme System - Dark Cyberpunk */
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #0f0f1a;
+            --bg-tertiary: #1a1a2e;
+            --bg-gradient: radial-gradient(ellipse at top, #1a1a2e 0%, #16213e 25%, #0f0f1a 50%, #0a0a0f 100%);
+            --glass-bg: rgba(26, 26, 46, 0.4);
+            --glass-border: rgba(139, 92, 246, 0.3);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-accent: #8b5cf6;
+            
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #06b6d4;
+            --accent-tertiary: #10b981;
+            --accent-danger: #ef4444;
+            --accent-warning: #f59e0b;
+            
+            --neon-purple: #8b5cf6;
+            --neon-cyan: #06b6d4;
+            --neon-green: #10b981;
+            
+            --shadow-neon: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple), 0 0 60px var(--neon-purple);
+            --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.5);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Light Futuristic Theme */
+        body.light-theme {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #e2e8f0;
+            --bg-gradient: radial-gradient(ellipse at top, #ffffff 0%, #f1f5f9 25%, #e2e8f0 50%, #cbd5e1 100%);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(79, 70, 229, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --text-accent: #4f46e5;
+            
+            --accent-primary: #4f46e5;
+            --accent-secondary: #0891b2;
+            --accent-tertiary: #059669;
+            --accent-danger: #dc2626;
+            --accent-warning: #d97706;
+            
+            --neon-purple: #4f46e5;
+            --neon-cyan: #0891b2;
+            --neon-green: #059669;
+            
+            --shadow-neon: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple);
+            --shadow-glow: 0 0 30px rgba(79, 70, 229, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        /* Animated Particles Background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            transition: var(--transition);
+        }
+
+        /* Revolutionary Theme Switch - Top Left */
+        .theme-switch {
+            position: relative;
+            width: 100px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border: 2px solid var(--glass-border);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            padding: 4px;
+            box-shadow: var(--glass-shadow), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .theme-switch::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan), var(--neon-green), var(--neon-purple));
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .theme-switch:hover::before {
+            opacity: 1;
+            animation: borderGlow 2s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .theme-switch:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .theme-orb {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+            border-radius: 50%;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+            transform: translateX(2px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .theme-switch.light .theme-orb {
+            transform: translateX(52px);
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Theme Icons with Animation */
+        .theme-icons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .moon-icon {
+            left: 15px;
+            opacity: 1;
+            color: var(--neon-cyan);
+        }
+
+        .sun-icon {
+            right: 15px;
+            opacity: 0;
+            color: #f59e0b;
+        }
+
+        .theme-switch.light .moon-icon {
+            opacity: 0;
+            transform: translateY(-50%) rotate(-180deg);
+        }
+
+        .theme-switch.light .sun-icon {
+            opacity: 1;
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        /* Logo in Top Nav */
+        .nav-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 1rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Simplified Header - No Persian text */
+        .hero-header {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: var(--glass-shadow);
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.8s;
+        }
+
+        .hero-header:hover::before {
+            transform: translateX(100%);
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            animation: titleGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { 
+                filter: drop-shadow(0 0 20px var(--neon-purple));
+                transform: scale(1);
+            }
+            to { 
+                filter: drop-shadow(0 0 40px var(--neon-cyan)) drop-shadow(0 0 60px var(--neon-green));
+                transform: scale(1.02);
+            }
+        }
+
+        /* Enhanced Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+            opacity: 0.5;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glass-shadow), var(--shadow-glow);
+            border-color: var(--neon-purple);
+        }
+
+        /* Smaller Tab System */
+        .tab-container {
+            padding: 1rem;
+        }
+
+        .tab-nav {
+            display: flex;
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 6px;
+            position: relative;
+            border: 1px solid var(--glass-border);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .tab-nav::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            width: calc(50% - 6px);
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+            border-radius: 12px;
+            transition: var(--transition);
+            right: 6px;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .tab-nav.ipv6-active::before {
+            right: 50%;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-btn.active {
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .tab-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            min-width: 20px;
+        }
+
+        .tab-btn.active .tab-badge {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced IP Content */
+        .ip-content {
+            padding: 2rem;
+            min-height: 400px;
+        }
+
+        .ip-section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ip-list {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        /* IP Items with Copy Button on Left */
+        .ip-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--neon-green), #059669);
+            border: none;
+            border-radius: 10px;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+            flex-shrink: 0;
+            order: 1; /* Move to left side */
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .ip-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 0.6rem 1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            min-height: 40px;
+            flex: 1;
+            order: 2; /* Keep on right side */
+        }
+
+        .ip-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .ip-item:hover::before {
+            left: 100%;
+        }
+
+        .ip-item:hover {
+            transform: translateY(-1px);
+            border-color: var(--neon-purple);
+            box-shadow: 0 3px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .ip-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            word-break: break-all;
+            text-align: left;
+            direction: ltr;
+            font-weight: 600;
+        }
+
+        /* Enhanced Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 250px;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--neon-purple);
+            border-right: 3px solid var(--neon-cyan);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, var(--neon-green), #059669);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+            font-weight: 700;
+            z-index: 1000;
+            transition: var(--transition);
+            opacity: 0;
+            font-size: 1rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer Logo */
+        .footer-logo {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 10;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--neon-purple);
+        }
+
+        .footer-logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Error & Empty States */
+        .error-state, .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .error-state h3, .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-danger);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .top-nav {
+                height: 70px;
+                padding: 0 1rem;
+            }
+
+            .theme-switch {
+                width: 80px;
+                height: 40px;
+            }
+
+            .theme-orb {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+
+            .theme-switch.light .theme-orb {
+                transform: translateX(42px);
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .container {
+                padding: 90px 0.5rem 2rem;
+                gap: 1.5rem;
+            }
+
+            .hero-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .tab-nav {
+                max-width: 250px;
+            }
+
+            .tab-btn {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .ip-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .ip-row {
+                gap: 0.6rem;
+            }
+
+            .ip-item {
+                padding: 0.5rem 0.8rem;
+                min-height: 36px;
+            }
+
+            .ip-text {
+                font-size: 0.8rem;
+            }
+
+            .copy-btn {
+                width: 28px;
+                height: 28px;
+            }
+
+            .copy-btn svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .theme-switch {
+                width: 70px;
+                height: 35px;
+            }
+
+            .theme-orb {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .theme-switch.light .theme-orb {
+                transform: translateX(37px);
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .tab-nav {
+                max-width: 220px;
+            }
+
+            .tab-btn {
+                padding: 0.5rem 0.6rem;
+                font-size: 0.75rem;
+            }
+
+            .tab-badge {
+                padding: 0.15rem 0.3rem;
+                font-size: 0.6rem;
+            }
+
+            .ip-row {
+                gap: 0.5rem;
+            }
+
+            .ip-item {
+                padding: 0.4rem 0.7rem;
+                min-height: 32px;
+            }
+
+            .ip-text {
+                font-size: 0.75rem;
+            }
+
+            .copy-btn {
+                width: 26px;
+                height: 26px;
+            }
+
+            .copy-btn svg {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="theme-switch" id="theme-switch">
+            <div class="theme-orb">🌙</div>
+            <span class="theme-icons moon-icon">🌙</span>
+            <span class="theme-icons sun-icon">☀️</span>
+        </div>
+        <div class="nav-logo">CLEAN IP</div>
+    </nav>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="container">
+        <!-- Simplified Header - No Persian text -->
+        <div class="hero-header">
+            <h1 class="hero-title">CLEAN IP</h1>
+        </div>
+
+        <!-- Smaller Tab Navigation -->
+        <div class="glass-card tab-container">
+            <div class="tab-nav" id="tab-nav">
+                <button class="tab-btn active" id="ipv4-tab">
+                    IPv4
+                    <span class="tab-badge" id="ipv4-count">0</span>
+                </button>
+                <button class="tab-btn" id="ipv6-tab">
+                    IPv6
+                    <span class="tab-badge" id="ipv6-count">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- IP Content -->
+        <div class="glass-card ip-content">
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>در حال بارگذاری آدرس‌های IP...</p>
+            </div>
+            
+            <div id="ipv4-content" style="display: none;">
+                <h2 class="ip-section-title">آدرس‌های IPv4</h2>
+                <div class="ip-list" id="ipv4-list"></div>
+            </div>
+            
+            <div id="ipv6-content" style="display: none;">
+                <h2 class="ip-section-title">آدرس‌های IPv6</h2>
+                <div class="ip-list" id="ipv6-list"></div>
+            </div>
+            
+            <div id="error-content" class="error-state" style="display: none;">
+                <h3>خطا در بارگذاری</h3>
+                <p>متأسفانه نتوانستیم آدرس‌های IP را بارگذاری کنیم. لطفاً دوباره تلاش کنید.</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://t.me/ipgenreator" target="_blank" rel="noopener noreferrer" class="footer-logo" title="کانال تلگرام">
+        <img src="https://raw.githubusercontent.com/darknessm427/Hiddify-warp/main/Darkness.png" alt="Logo">
+    </a>
+
+    <script>
+        // Application State
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        let currentTab = 'ipv4';
+        let ipv4IPs = [];
+        let ipv6IPs = [];
+
+        // DOM Elements
+        const themeSwitch = document.getElementById('theme-switch');
+        const themeOrb = themeSwitch.querySelector('.theme-orb');
+        const tabNav = document.getElementById('tab-nav');
+        const ipv4Tab = document.getElementById('ipv4-tab');
+        const ipv6Tab = document.getElementById('ipv6-tab');
+        const ipv4Count = document.getElementById('ipv4-count');
+        const ipv6Count = document.getElementById('ipv6-count');
+        const loading = document.getElementById('loading');
+        const ipv4Content = document.getElementById('ipv4-content');
+        const ipv6Content = document.getElementById('ipv6-content');
+        const errorContent = document.getElementById('error-content');
+        const ipv4List = document.getElementById('ipv4-list');
+        const ipv6List = document.getElementById('ipv6-list');
+        const toast = document.getElementById('toast');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTheme();
+            initializeParticles();
+            loadIPs();
+            setupEventListeners();
+        });
+
+        // Enhanced Theme Management
+        function initializeTheme() {
+            if (currentTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeSwitch.classList.add('light');
+                themeOrb.textContent = '☀️';
+            } else {
+                document.body.classList.remove('light-theme');
+                themeSwitch.classList.remove('light');
+                themeOrb.textContent = '🌙';
+            }
+        }
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            if (currentTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeSwitch.classList.add('light');
+                themeOrb.textContent = '☀️';
+            } else {
+                document.body.classList.remove('light-theme');
+                themeSwitch.classList.remove('light');
+                themeOrb.textContent = '🌙';
+            }
+            
+            localStorage.setItem('theme', currentTheme);
+        }
+
+        // Enhanced Particles Background
+        function initializeParticles() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            const particles = [];
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 1,
+                    opacity: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const isDark = !document.body.classList.contains('light-theme');
+                const colors = isDark ? ['#8b5cf6', '#06b6d4', '#10b981'] : ['#4f46e5', '#0891b2', '#059669'];
+
+                particles.forEach((particle, index) => {
+                    // Update position
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    // Bounce off edges
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+                    // Draw particle
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = colors[index % colors.length] + Math.floor(particle.opacity * 255).toString(16).padStart(2, '0');
+                    ctx.fill();
+
+                    // Draw connections
+                    particles.forEach((otherParticle, otherIndex) => {
+                        if (index !== otherIndex) {
+                            const dx = particle.x - otherParticle.x;
+                            const dy = particle.y - otherParticle.y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+
+                            if (distance < 100) {
+                                ctx.beginPath();
+                                ctx.moveTo(particle.x, particle.y);
+                                ctx.lineTo(otherParticle.x, otherParticle.y);
+                                ctx.strokeStyle = colors[index % colors.length] + '20';
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        }
+                    });
+                });
+            }
+
+            function animate() {
+                drawParticles();
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            themeSwitch.addEventListener('click', toggleTheme);
+            ipv4Tab.addEventListener('click', () => switchTab('ipv4'));
+            ipv6Tab.addEventListener('click', () => switchTab('ipv6'));
+        }
+
+        // Tab Management
+        function switchTab(tab) {
+            currentTab = tab;
+            
+            ipv4Tab.classList.toggle('active', tab === 'ipv4');
+            ipv6Tab.classList.toggle('active', tab === 'ipv6');
+            tabNav.classList.toggle('ipv6-active', tab === 'ipv6');
+            
+            ipv4Content.style.display = tab === 'ipv4' ? 'block' : 'none';
+            ipv6Content.style.display = tab === 'ipv6' ? 'block' : 'none';
+        }
+
+        // IP Loading
+        async function loadIPs() {
+            try {
+                loading.style.display = 'flex';
+                errorContent.style.display = 'none';
+                
+                const response = await fetch('https://raw.githubusercontent.com/darknessm427/IP_Generator/refs/heads/main/ips.txt');
+                const text = await response.text();
+                const ips = text.split('\n').map(ip => ip.trim()).filter(ip => ip !== '');
+
+                ipv4IPs = [];
+                ipv6IPs = [];
+
+                ips.forEach(ip => {
+                    if (ip.startsWith('IPv4:') || ip.startsWith('IPv6:')) {
+                        return;
+                    }
+                    if (ip.includes('.')) {
+                        ipv4IPs.push(ip);
+                    } else if (ip.includes(':')) {
+                        ipv6IPs.push(ip);
+                    }
+                });
+
+                updateCounts();
+                renderIPs();
+                
+                loading.style.display = 'none';
+                switchTab('ipv4');
+                
+            } catch (error) {
+                console.error('Error loading IPs:', error);
+                loading.style.display = 'none';
+                errorContent.style.display = 'block';
+            }
+        }
+
+        // Update Counts
+        function updateCounts() {
+            ipv4Count.textContent = ipv4IPs.length;
+            ipv6Count.textContent = ipv6IPs.length;
+        }
+
+        // Render IPs
+        function renderIPs() {
+            renderIPList(ipv4IPs, ipv4List);
+            renderIPList(ipv6IPs, ipv6List);
+        }
+
+        function renderIPList(ips, container) {
+            container.innerHTML = '';
+            
+            if (ips.length === 0) {
+                container.innerHTML = '<div class="empty-state"><h3>هیچ آدرس IP یافت نشد</h3></div>';
+                return;
+            }
+
+            ips.forEach(ip => {
+                const ipRow = document.createElement('div');
+                ipRow.className = 'ip-row';
+                
+                ipRow.innerHTML = `
+                    <button class="copy-btn" onclick="copyToClipboard('${ip}')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 16H9V8h9v13z"/>
+                        </svg>
+                    </button>
+                    <div class="ip-item">
+                        <div class="ip-text">${ip}</div>
+                    </div>
+                `;
+                
+                container.appendChild(ipRow);
+            });
+        }
+
+        // Copy to Clipboard
+        async function copyToClipboard(ip) {
+            try {
+                await navigator.clipboard.writeText(ip);
+                showToast('آدرس IP کپی شد! ✨');
+            } catch (error) {
+                const textArea = document.createElement('textarea');
+                textArea.value = ip;
+                textArea.style.position = 'fixed';
+                textArea.style.top = '-9999px';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                
+                try {
+                    document.execCommand('copy');
+                    showToast('آدرس IP کپی شد! ✨');
+                } catch (err) {
+                    showToast('خطا در کپی! ❌');
+                }
+                
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
